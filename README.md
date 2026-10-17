@@ -8,7 +8,7 @@
 [![Network: Sepolia](https://img.shields.io/badge/Network-Sepolia%20(11155111)-6366F1.svg)](https://sepolia.etherscan.io)
 [![Android APK](https://img.shields.io/badge/Android%20APK-v1.0.0-F59E0B.svg)](GuardianWallet-debug.apk)
 
-GitHub Repository: [https://github.com/siamm6/guardian-wallet](https://github.com/siamm6/guardian-wallet)
+GitHub Repository: [https://github.com/siammds/Fintech.git](https://github.com/siammds/Fintech.git)
 
 Guardian Wallet is an autonomous agent blockchain wallet developed for the 2026 Shenzhen International FinTech Competition (FinTechathon), International Track, Topic F: Agent Wallet / Autonomous On-Chain Wallet.
 
