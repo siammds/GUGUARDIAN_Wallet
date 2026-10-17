@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# Python Virtual Environments & Cache
+venv/
+**/venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+*.db
+.pytest_cache/
+**/.pytest_cache/
+
+# Android build intermediate caches
+.gradle/
+**/.gradle/
+build/
+**/build/
+local.properties
+**/local.properties
+captures/
+.externalNativeBuild/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.keystore
+
+# IDE and OS files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Exclude generic apk but allow the Guardian Wallet demo APK deliverables
+*.apk
+!GuardianWallet-debug.apk
+!artifacts/android/GuardianWallet-debug.apk

@@ -1,0 +1,25 @@
+{
+  "name": "guardian-wallet-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Guardian Wallet - AI-assisted autonomous blockchain wallet with deterministic policy controls",
+  "scripts": {
+    "dev": "npm run --prefix apps/web dev",
+    "build": "npm run --prefix apps/web build",
+    "test": "npm run --prefix apps/web test",
+    "lint": "npm run --prefix apps/web lint",
+    "typecheck": "npm run --prefix apps/web typecheck",
+    "android:sync": "npm run --prefix apps/web build && npx --prefix apps/web cap sync android",
+    "android:build": "powershell -ExecutionPolicy Bypass -File ./scripts/build-android.ps1",
+    "test:all": "powershell -ExecutionPolicy Bypass -File ./scripts/test-all.ps1"
+  },
+  "keywords": [
+    "fintech",
+    "ai-agent",
+    "ethereum",
+    "smart-wallet",
+    "policy-engine"
+  ],
+  "author": "Guardian Wallet Team",
+  "license": "MIT"
+}
