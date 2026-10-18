@@ -39,7 +39,7 @@ The application interprets user transaction directives into structured proposals
 
 ## Execution Evidence: Real On-Chain Sepolia Transaction Hashes
 
-As required for the Topic F: Autonomous On-Chain Wallet track evaluation, every transaction hash below is a real, confirmed on-chain transaction executed and mined on the Ethereum Sepolia Testnet (Chain ID 11155111):
+Autonomous On-Chain Wallet track evaluation, every transaction hash below is a real, confirmed on-chain transaction executed and mined on the Ethereum Sepolia Testnet (Chain ID 11155111):
 
 | # | Transaction Hash | Block | Gas Used | Effective Gas | Description | Sepolia Etherscan Link |
 | :-: | :--- | :-: | :-: | :-: | :--- | :--- |
