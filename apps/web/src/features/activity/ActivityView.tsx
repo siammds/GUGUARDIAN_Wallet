@@ -8,7 +8,8 @@ import {
   History,
   ShieldCheck,
   Copy,
-  Check
+  Check,
+  Download
 } from 'lucide-react';
 import { TransactionRecord } from '../../types';
 import { ReceiptInspectorModal } from '../wallet/ReceiptInspectorModal';
@@ -21,6 +22,17 @@ export const ActivityView: React.FC<ActivityViewProps> = ({ transactions }) => {
   const [filter, setFilter] = useState<'ALL' | 'CONFIRMED' | 'BLOCKED' | 'REVERTED'>('ALL');
   const [selectedTxForReceipt, setSelectedTxForReceipt] = useState<TransactionRecord | null>(null);
   const [copiedHash, setCopiedHash] = useState<string | null>(null);
+
+  const handleExportLedger = () => {
+    const jsonStr = JSON.stringify(transactions, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `guardian-wallet-audit-ledger-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const filtered = transactions.filter(tx => {
     if (filter === 'ALL') return true;
@@ -46,21 +58,32 @@ export const ActivityView: React.FC<ActivityViewProps> = ({ transactions }) => {
           </p>
         </div>
 
-        {/* Filter chips */}
-        <div className="flex items-center space-x-1.5 overflow-x-auto text-xs">
-          {(['ALL', 'CONFIRMED', 'BLOCKED', 'REVERTED'] as const).map(tab => (
-            <button
-              key={tab}
-              onClick={() => setFilter(tab)}
-              className={`px-3 py-1.5 rounded-lg font-medium transition ${
-                filter === tab
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-                  : 'bg-guardian-surface text-slate-400 hover:text-white border border-guardian-border'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+        {/* Filter chips & Export */}
+        <div className="flex items-center space-x-2 flex-wrap gap-y-2 text-xs">
+          <div className="flex items-center space-x-1.5 overflow-x-auto">
+            {(['ALL', 'CONFIRMED', 'BLOCKED', 'REVERTED'] as const).map(tab => (
+              <button
+                key={tab}
+                onClick={() => setFilter(tab)}
+                className={`px-3 py-1.5 rounded-lg font-medium transition ${
+                  filter === tab
+                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                    : 'bg-guardian-surface text-slate-400 hover:text-white border border-guardian-border'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={handleExportLedger}
+            title="Export full cryptographic ledger as JSON"
+            className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-cyan-500/40 transition flex items-center space-x-1.5 font-mono text-[11px]"
+          >
+            <Download className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Export JSON</span>
+          </button>
         </div>
       </div>
 

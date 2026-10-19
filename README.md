@@ -6,9 +6,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-00D2FF.svg)](LICENSE)
 [![Tests: 29 Passed](https://img.shields.io/badge/Tests-29%2F29%20Passed%20(100%25)-00F5A0.svg)](evidence/test-results/backend-pytest.txt)
 [![Network: Sepolia](https://img.shields.io/badge/Network-Sepolia%20(11155111)-6366F1.svg)](https://sepolia.etherscan.io)
-[![Android APK](https://img.shields.io/badge/Android%20APK-v1.0.0-F59E0B.svg)](GuardianWallet-debug.apk)
+[![Android APK](https://img.shields.io/badge/Android%20APK-Download-F59E0B.svg)](GuardianWallet-debug.apk)
 
-GitHub Repository: [https://github.com/siammds/Fintech.git](https://github.com/siammds/Fintech.git)
+GitHub Repository: [https://github.com/siammds/Fintech](https://github.com/siammds/Fintech)
 
 Guardian Wallet is an autonomous agent blockchain wallet developed for the 2026 Shenzhen International FinTech Competition (FinTechathon), International Track, Topic F: Agent Wallet / Autonomous On-Chain Wallet.
 
@@ -71,26 +71,25 @@ Fintech/
 │   │   └── MockERC20.sol           # Controlled test ERC-20 token
 │   └── foundry.toml             # Foundry build configuration
 ├── docs/
-│   ├── BUILD_STATUS.md          # Real-time build status and acceptance matrix
-│   ├── TECH_STACK.md            # Technology stack details and architectural decisions
-│   ├── ARCHITECTURE.md          # System architecture, pipeline, and trust boundaries
-│   ├── THREAT_MODEL.md          # Threat actors, attack vectors, and mitigations
-│   ├── SECURITY_SELF_ASSESSMENT.md # Audit status, invariants, and pre-mainnet requirements
-│   ├── TEST_PLAN.md             # Test cases, commands, expected vs actual outcomes
-│   ├── DEMO_SCRIPT.md           # Demonstration walkthrough
-│   ├── DEPLOYMENT.md            # Installation, APK compilation, and production hosting
-│   └── KNOWN_LIMITATIONS.md     # Testnet boundaries and prototype disclosures
+│   ├── TECHNICAL_DOCUMENTATION.docx # Full competition technical documentation (Word)
+│   ├── TECHNICAL_DOCUMENTATION.md   # Architectural whitepaper and invariant specifications
+│   ├── ARCHITECTURE.md              # System architecture, pipeline, and trust boundaries
+│   ├── THREAT_MODEL.md              # Threat actors, attack vectors, and mitigations
+│   ├── SECURITY_SELF_ASSESSMENT.md  # Audit status, invariants, and safety guarantees
+│   ├── TEST_PLAN.md                 # Test cases, commands, and verification logs
+│   ├── DEPLOYMENT.md                # Installation, APK setup, and production hosting
+│   └── KNOWN_LIMITATIONS.md         # Testnet boundaries and prototype disclosures
 ├── evidence/
-│   └── test-results/            # Raw automated test output logs
+│   ├── charts/                  # Academic system architecture and benchmark charts
+│   ├── screenshots/             # Dashboard, console, and mobile application captures
+│   ├── test-results/            # Raw automated pytest and vitest test output logs
+│   └── ONCHAIN_EXECUTION_EVIDENCE.md # Verified Sepolia transaction receipts and logs
 ├── scripts/
-│   ├── setup.ps1 / setup.sh     # Dependency installation scripts
+│   ├── setup.ps1 / setup.sh     # Automated dependency installation
 │   ├── run-all.ps1 / run-all.sh # Concurrent backend and frontend launcher
 │   ├── build-web.ps1 / .sh      # Production web bundler
 │   ├── build-android.ps1 / .sh  # Android APK Gradle compilation script
 │   └── test-all.ps1 / test-all.sh # Automated test suite runner
-├── artifacts/
-│   ├── web/                     # Production static web build
-│   └── android/                 # Compiled Android debug APK
 ├── GuardianWallet-debug.apk     # Standalone installable Android APK (Project Root)
 ├── launch.bat                   # Windows 1-click execution launcher
 └── package.json                 # Monorepo configuration
@@ -112,8 +111,8 @@ Double-click `launch.bat` in the project root. It starts the backend API, launch
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/siamm6/guardian-wallet.git
-   cd guardian-wallet
+   git clone https://github.com/siammds/Fintech.git
+   cd Fintech
    ```
 
 2. Run the setup script:

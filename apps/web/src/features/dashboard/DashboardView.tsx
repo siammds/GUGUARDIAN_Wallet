@@ -276,7 +276,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </span>
           <span className="hidden sm:inline text-slate-600">|</span>
           <span className="text-slate-400 text-[11px]">
-            POLICY v{summary.policy_version}
+            POLICY ENGINE ACTIVE
           </span>
         </div>
 

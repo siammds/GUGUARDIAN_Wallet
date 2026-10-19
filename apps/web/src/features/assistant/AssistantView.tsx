@@ -439,7 +439,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({
             )}
           </span>
           <span className="self-end sm:self-auto flex-shrink-0 text-cyan-400">
-            Guardian Agent Protocol v1
+            Guardian Agent Protocol Active
           </span>
         </div>
       </div>

@@ -10,7 +10,8 @@ import {
   Plus, 
   Trash2, 
   CheckCircle2,
-  AlertTriangle
+  AlertTriangle,
+  Search
 } from 'lucide-react';
 import { WalletSummary, AgentTier, RecipientEntry, PolicyConfig } from '../../types';
 import { apiClient } from '../../services/apiClient';
@@ -36,6 +37,7 @@ export const PermissionCentreView: React.FC<PermissionCentreViewProps> = ({
   const [recipients, setRecipients] = useState<RecipientEntry[]>(
     summary.approved_recipients || []
   );
+  const [searchQuery, setSearchQuery] = useState('');
   const [newRecipientLabel, setNewRecipientLabel] = useState('');
   const [newRecipientAddress, setNewRecipientAddress] = useState('');
 
@@ -85,7 +87,7 @@ export const PermissionCentreView: React.FC<PermissionCentreViewProps> = ({
 
     try {
       const res = await apiClient.updatePolicy(summary.wallet_address, updatedConfig, true);
-      setStatusMsg({ type: 'success', text: `Policy updated to v${res.policy_version}. Stale authorizations invalidated.` });
+      setStatusMsg({ type: 'success', text: 'Policy parameters updated successfully. Stale authorizations invalidated.' });
       setUserConfirmed(false);
       onRefresh();
     } catch (err: any) {
@@ -273,22 +275,35 @@ export const PermissionCentreView: React.FC<PermissionCentreViewProps> = ({
 
       {/* Approved Recipient Allowlist */}
       <div className="p-5 rounded-2xl bg-guardian-surface border border-guardian-border space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-white flex items-center space-x-1.5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center space-x-2">
             <UserCheck className="w-4 h-4 text-emerald-400" />
-            <span>Approved Recipient Allowlist</span>
-          </h3>
-          <span className="text-[10px] text-guardian-textMuted">
-            Autonomous execution is restricted to this allowlist in Tier 2
-          </span>
+            <h3 className="text-sm font-semibold text-white">Approved Counterparty Allowlist</h3>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+              {recipients.filter(r => r.label.toLowerCase().includes(searchQuery.toLowerCase()) || r.address.toLowerCase().includes(searchQuery.toLowerCase())).length} Active
+            </span>
+          </div>
+
+          <div className="relative w-full sm:w-64">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
+            <input
+              type="text"
+              placeholder="Search counterparties..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              className="w-full pl-8 pr-3 py-1.5 bg-slate-900 border border-guardian-border rounded-xl text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-cyan-500"
+            />
+          </div>
         </div>
 
         {/* Existing recipients */}
         <div className="space-y-2">
-          {recipients.map((rec) => (
+          {recipients
+            .filter(rec => rec.label.toLowerCase().includes(searchQuery.toLowerCase()) || rec.address.toLowerCase().includes(searchQuery.toLowerCase()))
+            .map((rec) => (
             <div
               key={rec.address}
-              className="p-3 rounded-xl bg-slate-900 border border-guardian-border flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs"
+              className="p-3 rounded-xl bg-slate-900 border border-guardian-border flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs hover:border-cyan-500/30 transition"
             >
               <div className="min-w-0 flex-1">
                 <div className="font-semibold text-white truncate">{rec.label}</div>
@@ -303,6 +318,11 @@ export const PermissionCentreView: React.FC<PermissionCentreViewProps> = ({
               </button>
             </div>
           ))}
+          {recipients.filter(rec => rec.label.toLowerCase().includes(searchQuery.toLowerCase()) || rec.address.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
+            <div className="p-4 text-center text-xs text-slate-500 font-mono">
+              No approved counterparties matching '{searchQuery}'
+            </div>
+          )}
         </div>
 
         {/* Add new recipient */}

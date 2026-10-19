@@ -134,7 +134,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         <div>
           <h4 className="text-sm font-semibold text-white">Reset Demo Environment</h4>
           <p className="text-xs text-guardian-textMuted mt-0.5">
-            Clear all local transactions, reset policy version to v1, and unpause the wallet.
+            Clear all local transactions, reset policy parameters to default, and unpause the wallet.
           </p>
         </div>
         <button

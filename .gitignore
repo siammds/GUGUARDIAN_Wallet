@@ -42,7 +42,11 @@ captures/
 .DS_Store
 Thumbs.db
 
+# Build output and temporary directories
+artifacts/
+dist/
+**/dist/
+
 # Exclude generic apk but allow the Guardian Wallet demo APK deliverables
 *.apk
 !GuardianWallet-debug.apk
-!artifacts/android/GuardianWallet-debug.apk

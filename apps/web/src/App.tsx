@@ -13,8 +13,9 @@ import { WalletSummary, TransactionRecord, TransactionProposal, PolicyEvaluation
 import { CyberAnimatedBackground } from './components/CyberAnimatedBackground';
 
 export const App: React.FC = () => {
-  const [currentTab, setCurrentTab] = useState<string>('dashboard');
-  const [showOnboarding, setShowOnboarding] = useState<boolean>(true);
+  const queryParams = new URLSearchParams(window.location.search);
+  const [currentTab, setCurrentTab] = useState<string>(queryParams.get('tab') || 'dashboard');
+  const [showOnboarding, setShowOnboarding] = useState<boolean>(queryParams.get('onboarding') === 'true');
   const [isDemo, setIsDemo] = useState<boolean>(true);
   
   const [summary, setSummary] = useState<WalletSummary | null>(null);
